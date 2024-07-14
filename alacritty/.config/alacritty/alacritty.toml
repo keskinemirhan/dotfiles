@@ -1,0 +1,111 @@
+live_config_reload = true
+[shell]
+program = "/bin/bash"
+
+[window]
+startup_mode = "Fullscreen"
+opacity = 0.80
+
+[font]
+size = 9.0
+	[font.normal]
+	family = "Hack Nerd Font Mono"
+
+	[font.bold]
+	family = "Hack Nerd Font Mono"
+	style = "Bold"
+
+	[font.italic]
+	family = "Hack Nerd Font Mono"
+	style = "Italic"
+
+	[font.bold_italic]
+	family = "Hack Nerd Font Mono"
+	style = "Bold Italic"
+
+
+[selection]
+save_to_clipboard = true
+
+[env]
+term = "xterm-256color"
+
+draw_bold_text_with_bright_colors = "true"
+
+[colors]
+	[colors.primary]
+	background = "#000000"
+	foreground = "#ffffff"
+	dim_foreground = "#ffffff"
+	bright_foreground = "#ffffff"
+
+	[colors.cursor]
+	text = "CellBackground"
+	cursor = "CellForeground"
+
+	[colors.vi_mode_cursor]
+	text = "CellBackground"
+	cursor = "CellForeground"
+
+	[colors.search]
+		[colors.search.matches]
+		foreground = "#ffffff"
+		background = "#1a66ff"
+
+		[colors.search.focused_match]
+		foreground = "#ffffff"
+		background = "#1a66ff"
+
+	[colors.footer_bar]
+	background = "#ffffff"
+	foreground = "#000000"
+
+	[colors.hints.start]
+	foreground = "#ffffff"
+	background = "#1a66ff"
+
+	[colors.hints.end]
+	foreground = "#1a66ff"
+	background = "#ffffff"
+
+	[colors.line_indicator]
+	foreground = "None"
+	background = "None"
+
+	[colors.selection]
+	text = "CellBackground"
+	background = "CellForeground"
+
+	[colors.normal]
+	black = "#000000"
+	red = "#ff7c4d"
+	green = "#22ff00"
+	yellow = "#ffcc00"
+	blue = "#1a66ff"
+	magenta = "#ff61df"
+	cyan = "#00ffff"
+	white = "#888888"
+
+	[colors.bright]
+	black = "#000000"
+	red = "#ff7c4d"
+	green = "#22ff00"
+	yellow = "#ffcc00"
+	blue = "#1a66ff"
+	magenta = "#ff61df"
+	cyan = "#00ffff"
+	white = "#ffffff"
+
+	[colors.dim]
+	black = "#000000"
+	red = "#ff7c4d"
+	green = "#22ff00"
+	yellow = "#ffcc00"
+	blue = "#1a66ff"
+	magenta = "#ff61df"
+	cyan = "#00ffff"
+	white = "#888888"
+
+
+
+	

@@ -1,0 +1,9 @@
+configuration {
+  modes: [ combi ];
+  combi-modes: [ window, drun, run ];
+  font: "Hack Nerd Font Mono 18";
+}
+
+@theme "gruvbox-dark"
+ 
+/* Insert theme modifications after this */
