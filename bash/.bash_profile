@@ -4,7 +4,10 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-    exec startx
-fi
+#if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+#    exec startx
+#fi
+
+[[ -z $HYPRLAND_INSTANCE_SIGNATURE ]] && Hyprland
+brightnessctl set 50%
 

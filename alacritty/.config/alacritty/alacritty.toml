@@ -3,27 +3,32 @@ live_config_reload = true
 program = "/bin/bash"
 
 [window]
-startup_mode = "Fullscreen"
-opacity = 1.0
+opacity = 0.75
+[window.padding]
+x = 5
+y = 5
 
+[cursor]
+[cursor.style]
+blinking = "Always"
 
 [font]
 size = 14.0
 offset.x = 0
 offset.y = 0
 	[font.normal]
-	family = "Consolas"
+	family = "Hack Nerd Font"
 
 	[font.bold]
-	family = "Consolas"
+	family = "Hack Nerd Font"
 	style = "Bold"
 
 	[font.italic]
-	family = "Consolas"
+	family = "Hack Nerd Font"
 	style = "Italic"
 
 	[font.bold_italic]
-	family = "Consolas"
+	family = "Hack Nerd Font"
 	style = "Bold Italic"
 
 
