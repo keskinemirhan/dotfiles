@@ -59,6 +59,24 @@ require("lazy").setup({
     {'lewis6991/gitsigns.nvim'},
     {'nvim-tree/nvim-web-devicons'},
     {'ThePrimeagen/vim-be-good'},
+    {'navarasu/onedark.nvim'},
+    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
+    {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+        require 'nordic' .load()
+    end
+},
+{
+    "rktjmp/lush.nvim",
+    -- if you wish to use your own colorscheme:
+    -- { dir = '/absolute/path/to/colorscheme', lazy = true },
+},
+{"jaredgorski/fogbell.vim"},
+{"robertmeta/nofrils"},
+{"Mofiqul/vscode.nvim"}
 
 
   }) 

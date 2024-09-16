@@ -158,16 +158,14 @@ vim.g.loaded_netrwPlugin = 1
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
--- empty setup using defaults
-require("nvim-tree").setup()
 
--- OR setup with some options
 require("nvim-tree").setup({
   sort = {
     sorter = "case_sensitive",
   },
   view = {
     width = 25,
+    -- side = "right",
   },
   renderer = {
     group_empty = true,
@@ -222,12 +220,10 @@ require('gitsigns').setup {
   },
 }
 
-require("catppuccin").setup({
- color_overrides = { 
-    all = {
-      base = "#000000",
-      mantle = "#000000",
-      crust = "#000000"
-    }
-  }
-})
+-- Lua
+require('onedark').setup {
+  style = 'warmer'
+}
+
+require('onedark').load()
+

@@ -4,7 +4,7 @@ vim.opt.signcolumn = 'no'
 
 vim.o.termguicolors = true
 -- vim.cmd("colorscheme rasmus")
-vim.cmd("colorscheme catppuccin-mocha")
+vim.cmd("colorscheme vscode")
 -- vim.cmd("colorscheme moonfly")
 vim.cmd("set number")
 vim.cmd("set scrolloff=15")

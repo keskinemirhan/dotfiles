@@ -8,6 +8,6 @@
 #    exec startx
 #fi
 
-[[ -z $HYPRLAND_INSTANCE_SIGNATURE ]] && Hyprland
-brightnessctl set 50%
+# [[ -z $HYPRLAND_INSTANCE_SIGNATURE ]] && Hyprland &> ~/hyprland_log
+
 

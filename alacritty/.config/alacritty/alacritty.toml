@@ -3,19 +3,18 @@ live_config_reload = true
 program = "/bin/bash"
 
 [window]
-opacity = 0.75
+opacity = 1.00
 [window.padding]
 x = 5
 y = 5
 
-[cursor]
-[cursor.style]
-blinking = "Always"
 
 [font]
-size = 14.0
+size = 12.0
 offset.x = 0
 offset.y = 0
+# |
+# |
 	[font.normal]
 	family = "Hack Nerd Font"
 
@@ -37,83 +36,36 @@ save_to_clipboard = true
 
 [env]
 term = "xterm-256color"
+# (Github Dark Tritanopia) Colors for Alacritty
 
-draw_bold_text_with_bright_colors = "true"
+# Default colors
+[colors.primary]
+background = '#0d1117'
+foreground = '#c9d1d9'
 
-[colors]
-	[colors.primary]
-	background = "#000000"
-	foreground = "#ffffff"
-	dim_foreground = "#ffffff"
-	bright_foreground = "#ffffff"
+# Cursor colors
+[colors.cursor]
+text = '#0d1117'
+cursor = '#c9d1d9'
 
-	[colors.cursor]
-	text = "CellBackground"
-	cursor = "CellForeground"
+# Normal colors
+[colors.normal]
+black = '#484f58'
+red = '#ff7b72'
+green = '#58a6ff'
+yellow = '#d29922'
+blue = '#58a6ff'
+magenta = '#bc8cff'
+cyan = '#39c5cf'
+white = '#b1bac4'
 
-	[colors.vi_mode_cursor]
-	text = "CellBackground"
-	cursor = "CellForeground"
-
-	[colors.search]
-		[colors.search.matches]
-		foreground = "#ffffff"
-		background = "#1a66ff"
-
-		[colors.search.focused_match]
-		foreground = "#ffffff"
-		background = "#1a66ff"
-
-	[colors.footer_bar]
-	background = "#ffffff"
-	foreground = "#000000"
-
-	[colors.hints.start]
-	foreground = "#ffffff"
-	background = "#1a66ff"
-
-	[colors.hints.end]
-	foreground = "#1a66ff"
-	background = "#ffffff"
-
-	[colors.line_indicator]
-	foreground = "None"
-	background = "None"
-
-	[colors.selection]
-	text = "CellBackground"
-	background = "CellForeground"
-
-	[colors.normal]
-	black = "#000000"
-	red = "#ff7c4d"
-	green = "#22ff00"
-	yellow = "#ffcc00"
-	blue = "#1a66ff"
-	magenta = "#ff61df"
-	cyan = "#00ffff"
-	white = "#888888"
-
-	[colors.bright]
-	black = "#000000"
-	red = "#ff7c4d"
-	green = "#22ff00"
-	yellow = "#ffcc00"
-	blue = "#1a66ff"
-	magenta = "#ff61df"
-	cyan = "#00ffff"
-	white = "#ffffff"
-
-	[colors.dim]
-	black = "#000000"
-	red = "#ff7c4d"
-	green = "#22ff00"
-	yellow = "#ffcc00"
-	blue = "#1a66ff"
-	magenta = "#ff61df"
-	cyan = "#00ffff"
-	white = "#888888"
-
-
-
-	
+# Bright colors
+[colors.bright]
+black = '#6e7681'
+red = '#ffa198'
+green = '#79c0ff'
+yellow = '#e3b341'
+blue = '#79c0ff'
+magenta = '#bc8cff'
+cyan = '#39c5cf'
+white = '#b1bac4'
