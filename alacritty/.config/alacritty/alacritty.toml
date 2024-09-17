@@ -16,18 +16,18 @@ offset.y = 0
 # |
 # |
 	[font.normal]
-	family = "Hack Nerd Font"
+	family = "Meslo LG S"
 
 	[font.bold]
-	family = "Hack Nerd Font"
+	family = "Meslo LG S"
 	style = "Bold"
 
 	[font.italic]
-	family = "Hack Nerd Font"
+	family = "Meslo LG S"
 	style = "Italic"
 
 	[font.bold_italic]
-	family = "Hack Nerd Font"
+	family = "Meslo LG S"
 	style = "Bold Italic"
 
 
