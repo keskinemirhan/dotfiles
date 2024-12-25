@@ -1,7 +1,10 @@
+-- Enable LSP
+local lsp_on = false
 local notes_path = "/home/emirhan/notes"
+local colorscheme = "vscode"
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
 
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -16,9 +19,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         os.exit(1)
     end
 end
-vim.opt.rtp:prepend(lazypath)
--- Options
 
+-- Options
+vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -163,84 +166,81 @@ require("lazy").setup({
 })
 
 -- Plugin Setups
-local lspconfig = require("lspconfig")
+if lsp_on then
+    local lspconfig = require("lspconfig")
 
-require("mason").setup()
+    require("mason").setup()
 
-require("mason-lspconfig").setup({
-    automatic_installation = true,
-})
+    require("mason-lspconfig").setup({
+        automatic_installation = true,
+    })
+
+    local cmp = require 'cmp'
+
+    cmp.setup({
+        snippet = {
+            -- REQUIRED - you must specify a snippet engine
+            expand = function(args)
+                require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            end,
+        },
+        window = {
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered(),
+        },
+        mapping = cmp.mapping.preset.insert({
+            ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-f>'] = cmp.mapping.scroll_docs(4),
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.abort(),
+            ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        }),
+        sources = cmp.config.sources({
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' }, -- For luasnip users.
+        }, {
+            { name = 'buffer' },
+        })
+    })
+
+
+
+    cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+            { name = 'buffer' }
+        }
+    })
+
+    cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+            { name = 'path' }
+        }, {
+            { name = 'cmdline' }
+        }),
+        matching = { disallow_symbol_nonprefix_matching = false }
+    })
+
+    -- Set up lspconfig.
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+    require('mason-lspconfig').setup_handlers({
+        function(server)
+            lspconfig[server].setup({
+                capabilities = capabilities
+            })
+        end,
+    })
+    -- LSP Keybindings
+    vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format() end)
+    vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end)
+    vim.keymap.set("n", "<leader>cr", function() vim.lsp.buf.rename() end)
+
+
+end
 
 require('gitsigns').setup()
-
-local cmp = require 'cmp'
-
-cmp.setup({
-    snippet = {
-        -- REQUIRED - you must specify a snippet engine
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        end,
-    },
-    window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' }, -- For luasnip users.
-    }, {
-        { name = 'buffer' },
-    })
-})
-
--- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
--- Set configuration for specific filetype.
---[[ cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-      { name = 'git' },
-    }, {
-      { name = 'buffer' },
-    })
- })
- require("cmp_git").setup() ]] --
-
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'buffer' }
-    }
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-        { name = 'path' }
-    }, {
-        { name = 'cmdline' }
-    }),
-    matching = { disallow_symbol_nonprefix_matching = false }
-})
-
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-require('mason-lspconfig').setup_handlers({
-    function(server)
-        lspconfig[server].setup({
-            capabilities = capabilities
-        })
-    end,
-})
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -304,13 +304,9 @@ local telescope = require("telescope.builtin")
 -- Plugin Keybindings
 vim.keymap.set("n", "<leader>f", telescope.find_files, { desc = 'FILES' })
 vim.keymap.set("n", "<leader>g", telescope.live_grep, { desc = 'GREP' })
-vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format() end)
-vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end)
-vim.keymap.set("n", "<leader>cr", function() vim.lsp.buf.rename() end)
-
 vim.keymap.set("n", "<leader>n", function() vim.cmd("Notes") end)
 
-vim.cmd("colorscheme vscode")
+vim.cmd("colorscheme " .. colorscheme)
 vim.cmd [[
    highlight CursorLineNr guibg=none
    highlight DiagnosticError guibg=none
