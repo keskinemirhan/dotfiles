@@ -35,7 +35,7 @@ vim.opt.scrolloff = 10
 vim.opt.wrap = false
 vim.opt.ic = true
 vim.opt.signcolumn = 'yes'
-vim.opt.guicursor = "n-v-i-c:block-Cursor"
+vim.opt.guicursor = "n-v-i-c:hor20-Cursor"
 
 vim.keymap.set("n", "<leader>/", function() vim.cmd("nohlsearch") end)
 vim.keymap.set("n", "<leader>s", function() vim.cmd("vsplit") end)
